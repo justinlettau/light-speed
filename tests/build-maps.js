@@ -6,7 +6,7 @@ const report = {
     { name: '1,000 items', size: 1_000 },
     { name: '10,00 items', size: 10_000 },
     { name: '100,000 items', size: 100_000 },
-    // note: reduce test takes too long to go much higher
+    // note: reduce with destructing test takes too long to go much higher
   ],
 };
 
@@ -29,7 +29,14 @@ describe(report, (test, { size }) => {
     }
   });
 
-  test('Reduce object', () => {
+  test('Reduce', () => {
+    data.reduce((prev, curr) => {
+      prev[curr] = curr;
+      return prev;
+    }, {});
+  });
+
+  test('Reduce with destructing', () => {
     data.reduce(
       (prev, curr) => ({
         ...prev,
