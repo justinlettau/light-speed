@@ -1,7 +1,7 @@
 import { createArray, describe } from '../src/index.js';
 
 const report = {
-  name: 'Build maps',
+  name: 'Maps write',
   variants: [
     { name: '1,000 items', size: 1_000 },
     { name: '10,00 items', size: 10_000 },
