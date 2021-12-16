@@ -9,6 +9,8 @@ import bytes from 'pretty-bytes';
 import ms from 'pretty-ms';
 import si from 'systeminformation';
 
+export const SKIP = '__skip__';
+
 export async function describe(info, describeFn) {
   console.log(`Running ${chalk.green(info.name)} ...`);
 
@@ -23,7 +25,7 @@ export async function describe(info, describeFn) {
     const test = (testName, testFn) => {
       const start = performance.now();
 
-      testFn();
+      const res = testFn();
 
       const end = performance.now();
       const totalTime = end - start;
@@ -31,6 +33,7 @@ export async function describe(info, describeFn) {
       testResults.push({
         testName,
         totalTime,
+        skipped: res === SKIP,
       });
     };
 
@@ -64,12 +67,20 @@ export async function describe(info, describeFn) {
       [
         ['Test', 'Execution Time'],
         ...item.testResults
-          .sort((a, b) => a.totalTime - b.totalTime)
+          .sort((a, b) => {
+            if (a.skipped !== b.skipped) {
+              return a.skipped - b.skipped;
+            }
+
+            return a.totalTime - b.totalTime;
+          })
           .map((result) => [
             result.testName,
-            ms(result.totalTime, {
-              millisecondsDecimalDigits: 4,
-            }),
+            result.skipped
+              ? 'skipped'
+              : ms(result.totalTime, {
+                  millisecondsDecimalDigits: 4,
+                }),
           ]),
       ],
       {

@@ -1,4 +1,4 @@
-import { createArray, describe } from '../src/index.js';
+import { createArray, describe, SKIP } from '../src/index.js';
 
 const report = {
   name: 'Maps write',
@@ -6,7 +6,7 @@ const report = {
     { name: '1,000 items', size: 1_000 },
     { name: '10,00 items', size: 10_000 },
     { name: '100,000 items', size: 100_000 },
-    // note: reduce with destructing test takes too long to go much higher
+    { name: '1,000,000 items', size: 1_000_000 },
   ],
 };
 
@@ -37,6 +37,11 @@ describe(report, (test, { size }) => {
   });
 
   test('Reduce with destructing', () => {
+    if (data.length > 100_000) {
+      // reduce with destructing takes too long for large arrays
+      return SKIP;
+    }
+
     data.reduce(
       (prev, curr) => ({
         ...prev,

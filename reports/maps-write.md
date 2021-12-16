@@ -8,25 +8,34 @@
 
 | Test                    | Execution Time |
 | :---------------------- | -------------: |
-| Reduce                  |       0.0614ms |
-| Object in for loop      |       0.0874ms |
-| Map in for loop         |       0.1072ms |
-| Reduce with destructing |       2.1324ms |
+| Reduce                  |       0.0714ms |
+| Object in for loop      |       0.0992ms |
+| Map in for loop         |       0.1215ms |
+| Reduce with destructing |       2.2698ms |
 
 ## 10,00 items
 
 | Test                    | Execution Time |
 | :---------------------- | -------------: |
-| Reduce                  |       0.3302ms |
-| Object in for loop      |       0.4730ms |
-| Map in for loop         |       1.4206ms |
-| Reduce with destructing |      40.8585ms |
+| Reduce                  |       0.3185ms |
+| Object in for loop      |       0.9165ms |
+| Map in for loop         |       1.1980ms |
+| Reduce with destructing |      53.2058ms |
 
 ## 100,000 items
 
 | Test                    | Execution Time |
 | :---------------------- | -------------: |
-| Reduce                  |       3.1645ms |
-| Object in for loop      |       4.9085ms |
-| Map in for loop         |      14.0719ms |
-| Reduce with destructing |          18.9s |
+| Reduce                  |       3.4478ms |
+| Object in for loop      |       6.3086ms |
+| Map in for loop         |      15.9883ms |
+| Reduce with destructing |          22.3s |
+
+## 1,000,000 items
+
+| Test                    | Execution Time |
+| :---------------------- | -------------: |
+| Reduce                  |      48.6008ms |
+| Object in for loop      |      57.2067ms |
+| Map in for loop         |     272.6526ms |
+| Reduce with destructing |        skipped |
