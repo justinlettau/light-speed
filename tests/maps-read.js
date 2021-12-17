@@ -23,11 +23,30 @@ describe(report, (test, { size }) => {
     9: 'i',
     10: 'j',
   };
+  const map = new Map([
+    [1, 'a'],
+    [2, 'b'],
+    [3, 'c'],
+    [4, 'd'],
+    [5, 'e'],
+    [6, 'f'],
+    [7, 'g'],
+    [8, 'h'],
+    [9, 'i'],
+    [10, 'j'],
+  ]);
 
   test('Object', () => {
     for (const item of data) {
       // eslint-disable-next-line no-unused-vars
       const value = object[item] || 'x';
+    }
+  });
+
+  test('Map', () => {
+    for (const item of data) {
+      // eslint-disable-next-line no-unused-vars
+      const value = map.get(item) || 'x';
     }
   });
 
