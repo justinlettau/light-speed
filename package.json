@@ -37,7 +37,7 @@
     "systeminformation": "^5.9.15"
   },
   "devDependencies": {
-    "eslint": "^7.1.0",
+    "eslint": "^9.0.0",
     "eslint-config-prettier": "^6.11.0",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
